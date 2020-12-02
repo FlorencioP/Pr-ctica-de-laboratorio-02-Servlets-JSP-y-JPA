@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import ec.edu.ups.dao.GenericcDAO;
 
 public class JPAGenericDAO<T, ID> implements GenericcDAO<T, ID> {
-    private Class<T> persistentClass;
+    protected Class<T> persistentClass;
     protected EntityManager em;
 
     public JPAGenericDAO(Class<T> persistentClass) {
