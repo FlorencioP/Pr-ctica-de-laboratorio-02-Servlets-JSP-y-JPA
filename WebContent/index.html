@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmpresasCorp</title>
+    <link rel="stylesheet" type="text/css" href="CSS/login.css" />
+</head>
+
+<body>
+    <img id="logo" src="Recursos/Logo.png" alt="EmpresasCorp" />
+    <form id="formulario01"  action="Login" method="post">
+        <label for="correo">Correo: </label>
+        <input type="text" name="correo" placeholder="Ingrese su correo" />
+
+        <label for="password">Contraseña: </label>
+        <input type="password" name="password" placeholder="Ingrese su contraseña" /><br>
+        <input id="login" type="submit" value="Iniciar Sesion">
+
+    </form>
+    
+    
+    <div id="empresas">
+         <form action="VisualizacionProductosInvitado" method="post">
+       		<div class="cont">
+	            <a>Viñedo del amanecer <br><br> <img id="vino" src="Recursos/Viñedo el amanecer.jpg" alt="Viñedo el amanecer" /></a>
+	            <p>La bodega principal de  licores de Mondstadt. </p>
+	        	<input id="wine" name="idEmp" type="hidden" value="1" >
+	        	<input type="submit" value="Entrar" >
+	        </div>
+        </form>
+
+
+		<form action="VisualizacionProductosInvitado" method="post">
+	        <div class="cont">
+	            <a>Aeropostale <br><br> <img id="ropa" src="Recursos/Aeropost.jpg" alt="Aeropostale" /></a>
+	            <p>Es una empresa textil dedicada a la venta de ropa para jóvenes</p>
+	            <input id="ropa" name="idEmp" type="hidden" value="2" >
+	        	<input type="submit" value="Entrar" >
+	        </div>
+		</form>
+
+
+
+		
+		<form action="VisualizacionProductosInvitado" method="post">
+	        <div class="cont">
+	            <a>Supermercado 9cito <br><br> <img id="comid" src="Recursos/9cito.jpg" alt="9cito" /></a>
+	            <p>Es una tienda que ofrece viveres de  consumo diario</p>
+	           <input id="9cit" name="idEmp" type="hidden" value="3" >
+	        	<input type="submit" value="Entrar" >
+	        </div>
+	    </form> 
+	    
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Super Mercado 9cito</title>
+
+    <link rel="stylesheet" type="text/css" href="../../CSS/directorio9ci.css" />
+    <script src='../../JavaScript/busqueda.js'></script>
+
+</head>
+
+
+<body>
+
+
+    <p>Super mercado 9cito: Menu de Busqueda</p>
+
+    <div id="volver">
+        <a href="../../index.html"><img src="../../Recursos/fecha.png"></a>
+    </div>
+
+    <form id="cajadecategorias">
+
+        <label for="cat">Seleccione una categoria:</label> <br>
+        <select name="cat" id="caja">
+            <option value="s">Ejemplo: Pan</option>
+            <option value="m">Ejemplo: Vino</option>
+        </select>
+        <!-- <input type="button" value="Seleccionar categoria" onclick="buscar()" /><br>
+        -->
+    </form>
+
+
+
+    <br>
+
+    <form id="busqueda" onsubmit="return buscar()">
+
+        <label for="busqueda">Busqueda por texto:</label><br>
+
+        <input type="text" id="textoabusc" placeholder="Ingrese una palabra" />
+
+        <input type="button" value="Buscar: " onclick="buscar()" /><br>
+
+    </form>
+
+
+
+
+
+
+    <div id="informacion">
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,57 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    /*Se queda en el centro no se mueve*/
+    background-image: url(../Recursos/Fondo1.jpg);
+}
+
+#logo {
+    float: left;
+}
+
+#formulario01 {
+    float: right;
+    background-color: rgb(255, 255, 255, 0.9);
+    border: black thick solid;
+    padding: 0.5%;
+    margin-right: 2%;
+}
+
+#login {
+    margin: 1%;
+}
+
+#empresas {
+    clear: both;
+}
+
+#empresas .cont {
+    float: left;
+    background-color: rgb(255, 255, 255, 0.9);
+    border: black thick solid;
+    padding: 2%;
+    border-radius: 25px;
+    font-size: 200%;
+    margin-left: 7%;
+    margin-top: 3%;
+    text-align: center;
+    width: 300px;
+    height: 500px;
+}
+
+#empresas a img {
+    width: 200px;
+    height: 200px;
+}
+
+@font-face {
+    font-family: "PIX";
+    src: url("../FormatoL/Almond\ Nougat.ttf");
+}
+
+* {
+    font-family: "PIX";
+    font-size: 100%;
+}

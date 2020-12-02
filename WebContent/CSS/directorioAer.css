@@ -1,0 +1,179 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    /*Se queda en el centro no se mueve*/
+    background-image: url(../Recursos/fondAer.jpg);
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 2.3%;
+    margin-top: 3%;
+    position: sticky;
+}
+
+.tg td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg th {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-46ru {
+    background-color: rgb(247, 240, 72);
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top
+}
+
+.tg .tg-y698 {
+    background-color: rgb(255, 255, 255, 0.92);
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top
+}
+
+@font-face {
+    font-family: "PIX";
+    src: url("../FormatoL/Almond\ Nougat.ttf");
+}
+
+* {
+    font-family: "PIX";
+    font-size: 110%;
+}
+
+#cajadecategorias {
+    float: left;
+    margin-top: 1.80%;
+    font-size: 150%;
+  	margin-left: 38%;
+    margin-right: 10%;
+}
+
+label {
+    font-weight: bold;
+    background-color: rgb(255, 255, 255, 0.50);
+}
+
+#busqueda {
+    float: rigth;
+    font-size: 150%;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255, 0.50);
+    font-size: 200%;
+}
+
+#reset {
+    clear: both;
+    float: left;
+    margin-left: 42%;
+    margin-bottom: 1%;
+}
+
+#add {
+    clear: both;
+    float: left;
+    margin-left: 44%;
+    margin-bottom: 1%;
+}
+
+b {
+    clear: both;
+    float: left;
+    margin-left: 40%;
+    margin-bottom: 1%;
+    margin-top: 6%;
+    background-color: rgb(255, 255, 255, 0.9);
+    border: black thick solid;
+    padding: 3%;
+    border-radius: 25px;
+    font-size: 130%;
+}
+
+#volver {
+    position: absolute;
+    margin-left: 90%;
+}
+
+#volver img {
+    width: 50%;
+}
+
+#volver img:hover {
+    width: 51%;
+}
+
+#verpedidos {
+    clear: both;
+    float: left;
+    margin-left: 37%;
+    margin-right:5%;
+}
+
+#crear{
+    padding-top:2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pantalla{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+#OpsAdm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#editProd{
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+#OpsBusca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    background-color: rgb(255, 255, 255, 0.75);
+    text-align:center;
+}
+
+#formularioM{
+    justify-content: center;
+    align-items: center;
+}
