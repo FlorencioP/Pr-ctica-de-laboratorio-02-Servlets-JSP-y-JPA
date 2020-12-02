@@ -13,31 +13,31 @@ public class JPADAOFactory extends DAOFactory{
 	@Override
 	public ProductosDao getProductosDao() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAProductoDAO();
 	}
 
 	@Override
 	public UsuariosDAO getUsuariosDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAUsuarioDAO();
 	}
 
 	@Override
 	public CAtegoriaDAO getcCAtegoriaDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPACategoriaDAO();
 	}
 
 	@Override
 	public PedidoCabeceraDAO getpeCabeceraDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAPedidoCabeceraDAO();
 	}
 
 	@Override
 	public PedidoDetalleDAO getpeDetalleDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new JPAPedidoDetalleDAO();
 	}
 
 	@Override

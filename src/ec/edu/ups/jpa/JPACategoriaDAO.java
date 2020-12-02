@@ -10,6 +10,5 @@ public class JPACategoriaDAO extends JPAGenericDAO<Categoria, Integer> implement
 	public JPACategoriaDAO() {
 		super(Categoria.class);
 	}
-
 	
 }
