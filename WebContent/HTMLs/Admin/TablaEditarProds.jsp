@@ -7,6 +7,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+
 	<c:set var="u" scope="request" value="${usu}" />
     <% Usuario u = (Usuario) request.getAttribute("usu"); %>
 	

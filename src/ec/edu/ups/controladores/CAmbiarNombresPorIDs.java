@@ -36,6 +36,7 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
     	prodDAO= DAOFactory.getFactory().getProductosDao();
     	pedDetDAO= DAOFactory.getFactory().getpeDetalleDAO();
     	pedCabDAO= DAOFactory.getFactory().getpeCabeceraDAO();
+    	usuDAO = DAOFactory.getFactory().getUsuariosDAO();
     }
 
 	/**
@@ -49,12 +50,14 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
 			int fkEmp=Integer.parseInt(request.getParameter("fkEmp"));
 			int idCab=pedCabDAO.ultimoID()+1;
 			
-			Usuario usu = (Usuario) usuDAO.findU(usuID);
+			Usuario usu = usuDAO.read(usuID);
 			
 			PedidoCabecera pedCab=new PedidoCabecera(idCab, usu, 'T');
 			
 		
 			pedCabDAO.create(pedCab);
+			
+			
 			int idCab2=pedCabDAO.ultimoID();
 			System.out.println("usuID: "+usuID);
 			System.out.println("fkEmp: "+fkEmp);
@@ -72,17 +75,18 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
 				int idDet=pedDetDAO.ultimoID()+1;
 				
 				
-				PedidoCabecera pedidoCabecera =  pedCabDAO.read(idCab2);
-				
 				Producto producto = prodDAO.read(ejem.get(i));
 				
 				
-				PedidoDetalle pedDet  = new PedidoDetalle(idDet, ejem2.get(i), pedidoCabecera, producto);
+				PedidoDetalle pedDet  = new PedidoDetalle(idDet, ejem2.get(i), pedCab, producto);
+				
+				System.out.println(pedDet);
 				
 				pedDetDAO.create(pedDet);
 			}
 			url="/HTMLs/User/MensajeExito.jsp";
 		}catch (Exception e) {
+			System.out.println("Error: " +e);
 			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);

@@ -4,15 +4,23 @@ package ec.edu.ups.jpa;
 import java.util.Iterator;
 import java.util.List;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
+import ec.edu.ups.dao.CAtegoriaDAO;
 import ec.edu.ups.dao.ProductosDao;
+import ec.edu.ups.entidades.Categoria;
 import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Producto;
 
 
 public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements ProductosDao{
 
+	private EmpresaDAO empDAO;
+	private CAtegoriaDAO catDAO;
 	public JPAProductoDAO() {
 		super(Producto.class);
+		empDAO = DAOFactory.getFactory().getEmpresaDAO();
+		catDAO = DAOFactory.getFactory().getcCAtegoriaDAO();
 	}
 
 	
@@ -22,10 +30,13 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	public List<Producto> findC(Integer id, Integer emp) {
 		
 		List<Producto> list = null;
-		String consulta = "Select p From Producto p where p.estado = 'A'";
+		Categoria catE = catDAO.read(id);
+		Empresa sta = empDAO.read(emp);
+		
+		String consulta = "Select p From Producto p Where p.categoria =:id And p.estado = 'A' and p.empresa =:emp";
 		try {
 			
-			list = em.createQuery(consulta).getResultList();
+			list = em.createQuery(consulta).setParameter("id", catE).setParameter("emp", sta).getResultList();
 			
 			for (Iterator<Producto> iterator = list.iterator(); iterator.hasNext();) {
 				Producto producto = iterator.next();
@@ -46,12 +57,12 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	
 	
 	public List<Producto> findE(Integer id) {
-		
+		Empresa sta= null;
 		List<Producto> list = null;
 		char A = 'A';
 		String consulta ="Select p From Producto p Where p.empresa =:id And p.estado =:stes ";
 		
-		Empresa sta = new Empresa(1,"wqe");
+		 sta = empDAO.read(id);
 		
 		try {
 			
@@ -75,7 +86,7 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	
 	public int buscarUltId() {
 		
-		String consulta ="Select MAX(p.id) from Productos p ;";	
+		String consulta ="Select MAX(p.id) from Producto p ";	
 		int numero = 0 ;
 		try {
 			
@@ -97,11 +108,14 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 	public List<Producto> findCnomb(int cat, int idEmp, String tex) {
 		
 		List<Producto> list = null;
-		String consulta ="Select p From Producto p Where p.Categoria_id =:cat And p.estado = 'A' and p.Empresa_id =:idEmp and p.nombre rlike :tex";
+		
+		Categoria catE = catDAO.read(cat);
+		Empresa sta = empDAO.read(idEmp);
+		String consulta ="Select p From Producto p Where p.categoria =:cat And p.estado = 'A' and p.empresa =:idEmp and p.nombre LIKE :tex ";
 		
 		try {
 			
-			list = em.createQuery(consulta).setParameter("cat", cat).setParameter("idEmp", idEmp).setParameter("tex", tex).getResultList();
+			list = em.createQuery(consulta).setParameter("cat", catE).setParameter("idEmp", sta).setParameter("tex", "%"+tex+"%").getResultList();
 			
 			for (Iterator<Producto> iterator = list.iterator(); iterator.hasNext();) {
 				Producto producto = iterator.next();
@@ -144,15 +158,21 @@ public class JPAProductoDAO extends JPAGenericDAO<Producto, Integer> implements 
 
 	@Override
 	public void deleteEstado(Producto ste) {
-		String consulta =(" UPDATE Producto p set p.estado = 'E' WHERE p.id =:ste  ");
-		
+		//String consulta =(" UPDATE Producto p set p.estado =:stad WHERE p.id =:ste  ");
+		em.getTransaction().begin();
+		ste.setEstado('E');
 		try {
-
-			em.createQuery(consulta).setParameter("ste", ste.getId()).getSingleResult();
+			
+			em.merge(ste);
+		    em.getTransaction().commit();
+			
+			//em.createQuery(consulta).setParameter("stad", 'E').setParameter("ste", ste.getId());
 			
 		}catch(Exception e) {
 
-			System.out.println(">>>WARNING (JDBCProductoDAO:findID): " + e.getMessage());
+			System.out.println("Error en deleteEstado: " + e);
+		    if (em.getTransaction().isActive())
+			em.getTransaction().rollback();
 
 		}
 	}

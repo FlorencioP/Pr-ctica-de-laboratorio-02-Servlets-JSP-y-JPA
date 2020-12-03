@@ -66,4 +66,12 @@ public class PedidoDetalle implements Serializable {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
+
+	@Override
+	public String toString() {
+		return "PedidoDetalle [id=" + id + ", cantidad=" + cantidad + ", pedidoCabecera=" + pedidoCabecera
+				+ ", producto=" + producto + "]";
+	}
+	
+	
 }

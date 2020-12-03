@@ -16,14 +16,14 @@
     <% 
     
     if (u.getEmpresa().getId() == 1){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
     }else if (u.getEmpresa().getId() == 2){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
     }else{
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
     }
     %>
-    <script src='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/busqueda.js'></script>
+    <script src='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/busqueda.js'></script>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -43,7 +43,7 @@
 		 <% PrintWriter out2= response.getWriter();%>
 		 
 	    <div id="volver">
-	        <a href="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Salir"><img src="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/logout.png"></a>
+	        <a href="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/Salir"><img src="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/logout.png"></a>
 	    </div>
 	
 	    <div id="verpedidos">
@@ -51,7 +51,7 @@
 	    </div>
 	    
 	    <div id="crearpedidos">
-	        <input type="button" value="Crear pedidos" onclick="crearPedU(${u.FKEmpID})" /><br>
+	        <input type="button" value="Crear pedidos" onclick="crearPedU(${u.getEmpresa().getId()})" /><br>
 	    </div>
 	    
 	    <div id="crear">

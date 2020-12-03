@@ -23,7 +23,7 @@ function buscarProds(){
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/BuscarProds?idEmp="+empr+"&cat="+cat+"&palb="+palb, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/BuscarProds?idEmp="+empr+"&cat="+cat+"&palb="+palb, true);
     xmlhttp.send();
 
 
@@ -51,7 +51,7 @@ function editarprods(select) {
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/EditarProds?idEmp="+select, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/EditarProds?idEmp="+select, true);
     xmlhttp.send();
 
 
@@ -88,7 +88,7 @@ function editarprod(id) {
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/GuardarEditarProds?id="+id+"&nom="+nom+"&pre="+pre+"&des="+des+"&img="+img+"&sel="+sel+"&empre="+empr, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/GuardarEditarProds?id="+id+"&nom="+nom+"&pre="+pre+"&des="+des+"&img="+img+"&sel="+sel+"&empre="+empr, true);
     xmlhttp.send();
 
 
@@ -114,7 +114,7 @@ function eliminarprod (id) {
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/EliminarEditarProds?id="+id+"&empre="+empr, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/EliminarEditarProds?id="+id+"&empre="+empr, true);
     xmlhttp.send();
 
 
@@ -145,7 +145,7 @@ function crearprods(select) {
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CrearProdsVin?idEmp="+select, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CrearProdsVin?idEmp="+select, true);
     xmlhttp.send();
 
 
@@ -193,7 +193,7 @@ function guardarDatos(){
 	        }
 	    };
 	
-	    xmlhttp.open("GET","/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/GuardarProdsVin?nom="+nom+"&empl="+empl+"&des="+des+"&img="+img+"&pre="+pre+"&sel="+sel, true);
+	    xmlhttp.open("GET","/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/GuardarProdsVin?nom="+nom+"&empl="+empl+"&des="+des+"&img="+img+"&pre="+pre+"&sel="+sel, true);
 	    xmlhttp.send();
 	
 	
@@ -219,7 +219,7 @@ function manejoPeds(empID){
 	        }
 	    };
 	
-	    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsers?idEmp="+empID, true);
+	    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsers?idEmp="+empID, true);
 	    xmlhttp.send();
 	
 	
@@ -245,7 +245,7 @@ function mostrarPeds(usuID){
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPeds?usuID="+usuID, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPeds?usuID="+usuID, true);
     xmlhttp.send();
 
 
@@ -271,7 +271,7 @@ function MostrarDetalles(cabsID){
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPedsDetall?cabsID="+cabsID, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPedsDetall?cabsID="+cabsID, true);
     xmlhttp.send();
 
 
@@ -297,7 +297,7 @@ function CambiarEstad(id, est ,pedi){
         }
     };
 
-    xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPedsCambio?usuID="+id+"&est="+est+"&pedi="+pedi, true);
+    xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/MostrarUsersPedsCambio?usuID="+id+"&est="+est+"&pedi="+pedi, true);
     xmlhttp.send();
 
 

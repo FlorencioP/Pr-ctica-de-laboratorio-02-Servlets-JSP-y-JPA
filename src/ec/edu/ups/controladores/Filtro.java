@@ -39,7 +39,7 @@ public class Filtro implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		if(session.getAttribute("accesos") ==  null) {
-			((HttpServletResponse)response).sendRedirect("/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html");
+			((HttpServletResponse)response).sendRedirect("/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html");
 		}
 		else {
 			chain.doFilter(request, response);

@@ -15,7 +15,7 @@ function eliminarDET (idPed,idCab) {
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/EliminarDet?idDet="+idPed+"&idCab="+idCab, true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/EliminarDet?idDet="+idPed+"&idCab="+idCab, true);
         xmlhttp.send();
 	
 
@@ -66,7 +66,7 @@ function confirmar(usuID,fkEmp) {
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CAmbiarNombresPorIDs?lisPedido="+lisPedido+"&usuID="+usuID+"&fkEmp="+fkEmp, true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CAmbiarNombresPorIDs?lisPedido="+lisPedido+"&usuID="+usuID+"&fkEmp="+fkEmp, true);
         xmlhttp.send();
 	
 	lisPedido="";
@@ -129,7 +129,7 @@ function buscar(select , idEmp) {
 
 		console.log(select+" y "+ idEmp);
 		
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/FiltrarProdPorCatInv?idCat="+select +"&idEmpre="+idEmp , true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/FiltrarProdPorCatInv?idCat="+select +"&idEmpre="+idEmp , true);
         xmlhttp.send();
 
 
@@ -160,7 +160,7 @@ function crearPedU(idEmp) {
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/VizualiProdCrearPed?idEmp="+idEmp, true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/VizualiProdCrearPed?idEmp="+idEmp, true);
         xmlhttp.send();
 
 
@@ -183,7 +183,7 @@ function verPedidos(usuID){
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/VerPedidos?usuID="+usuID, true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/VerPedidos?usuID="+usuID, true);
         xmlhttp.send();
 
     return false;
@@ -214,7 +214,7 @@ function verPedidosUsu(nodo){
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/VerPedidosDetalle?cabeceraID="+cabeceraID, true);
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/VerPedidosDetalle?cabeceraID="+cabeceraID, true);
         xmlhttp.send();
 
     return false;
@@ -304,7 +304,7 @@ function guardarProdMod(nodo,idCab,idDet,prodID){
             }
         };
 
-        xmlhttp.open("GET", "/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/ModificarDetalle?cantidad="+
+        xmlhttp.open("GET", "/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/ModificarDetalle?cantidad="+
         cantidad+"&idCab="+idCab+"&idDet="+idDet+"&prodID="+prodID, true);
         xmlhttp.send();
 

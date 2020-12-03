@@ -6,22 +6,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.PedidoCabeceraDAO;
 import ec.edu.ups.dao.PedidoDetalleDAO;
+import ec.edu.ups.entidades.PedidoCabecera;
 import ec.edu.ups.entidades.PedidoDetalle;
 
 public class JPAPedidoDetalleDAO extends JPAGenericDAO<PedidoDetalle, Integer> implements PedidoDetalleDAO{
+	private PedidoCabeceraDAO pedcabDAO;
+	
 	public JPAPedidoDetalleDAO() {
 		super(PedidoDetalle.class);
+		pedcabDAO = DAOFactory.getFactory().getpeCabeceraDAO();
 	}
 
 	
 	public List<PedidoDetalle> listPed(int id) {
 		
 		List<PedidoDetalle> list= null;
-		String consulta =("SELECT p From PedidoDetalle p Where p.PedidoCabecera_id =:id ");
+		
+		PedidoCabecera sta = pedcabDAO.read(id); 
+		
+		String consulta =("SELECT p From PedidoDetalle p Where p.pedidoCabecera =:id ");
 		try {
 
-			list = em.createQuery(consulta).setParameter("id", id).getResultList();
+			list = em.createQuery(consulta).setParameter("id", sta).getResultList();
 			
 			for (Iterator<PedidoDetalle> iterator = list.iterator(); iterator.hasNext();) {
 				PedidoDetalle producto = (PedidoDetalle) iterator.next();
@@ -38,8 +47,8 @@ public class JPAPedidoDetalleDAO extends JPAGenericDAO<PedidoDetalle, Integer> i
 	
 	public int ultimoID() {
 		
-		int id=0;
-		String consulta =("select p.id from PedidoDetalle p order by p.id desc limit 1");
+		int id=0; 
+		String consulta =("Select MAX(p.id) from PedidoDetalle p");
 		try{
 
 			id = (Integer) em.createQuery(consulta).getSingleResult();

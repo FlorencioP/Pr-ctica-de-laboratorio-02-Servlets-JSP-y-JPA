@@ -48,8 +48,8 @@ public class EditarProds extends HttpServlet {
 			request.setAttribute("idEmp", idEmp);
 			
 
-				
-				List<Producto> list=proDao.findE(idEmp);
+				List<Producto> list=null;
+				list=proDao.findE(idEmp);
 				
 				request.setAttribute("listaProd", list);
 				

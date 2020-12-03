@@ -32,6 +32,7 @@ public class JPAGenericDAO<T, ID> implements GenericcDAO<T, ID> {
     @Override
     public T read(ID id) {
 	return em.find(persistentClass, id);
+    
     }
 
     @Override
@@ -40,6 +41,7 @@ public class JPAGenericDAO<T, ID> implements GenericcDAO<T, ID> {
 	try {
 	    em.merge(entity);
 	    em.getTransaction().commit();
+	    
 	} catch (Exception e) {
 	    System.out.println(">>>> ERROR:JPAGenericDAO:update " + e);
 	    if (em.getTransaction().isActive())

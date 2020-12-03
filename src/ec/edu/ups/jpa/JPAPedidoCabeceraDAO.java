@@ -34,18 +34,32 @@ public class JPAPedidoCabeceraDAO extends JPAGenericDAO<PedidoCabecera, Integer>
 		}
 		return resultList;
 	}
+	
 	public void modEst(char est, int id) {
+		em.getTransaction().begin();
+		
 		root=cu.from(this.persistentClass);
+		
 		cu.set(root.get("estado"), est);
+		
 		Predicate p1=cb.equal(root.get("id"),id);
+		
 		Predicate p2=cb.notEqual(root.get("estado"),'E');
+		
 		Predicate predicado=cb.conjunction(); 
+		
 		predicado=cb.and(p1,p2);
+		
 		cu.where(predicado);
+		
 		try {
 			this.em.createQuery(cu).executeUpdate();
+			em.getTransaction().commit();
+			
 		}catch (Exception e) {
 			System.out.println(">>>WARNING (JPAPedidoCabeceraDAO:modEst): " + e.getMessage());
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
 		}
 		
 	}

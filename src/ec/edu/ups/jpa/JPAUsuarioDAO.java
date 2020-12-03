@@ -2,12 +2,18 @@ package ec.edu.ups.jpa;
 import java.util.ArrayList;
 import java.util.List;
 
+import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.UsuariosDAO;
+import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Usuario;
 
 public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements UsuariosDAO{
+	private EmpresaDAO empDAO;
+	
 	public JPAUsuarioDAO() {
 		super(Usuario.class);
+		empDAO = DAOFactory.getFactory().getEmpresaDAO();
 	}
 	
 	
@@ -53,9 +59,12 @@ public class JPAUsuarioDAO extends JPAGenericDAO<Usuario, Integer> implements Us
 	
 	public List<Usuario> findU(int id) {
 		List<Usuario> respuesta = new ArrayList<Usuario>();
-		String consulta =("SELECT u FROM Usuario u WHERE u.Empresa_id =:id AND u.rol = 'U'");
+		
+		Empresa sta = empDAO.read(id);
+		
+		String consulta =("SELECT u FROM Usuario u WHERE u.empresa =:id AND u.rol = 'U'");
 		try {
-				respuesta=(List<Usuario>)em.createQuery(consulta).setParameter("id", id).getResultList();				
+				respuesta=(List<Usuario>)em.createQuery(consulta).setParameter("id", sta).getResultList();				
 		}catch(Exception e) {
 			System.out.println(">>>WARNING (JDBCUsuarioDAO:findU): " + e.getMessage());
 		}

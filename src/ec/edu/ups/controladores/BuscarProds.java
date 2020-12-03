@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductosDao;
+import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Usuario;
 
 /**
  * Servlet implementation class BuscarProds
@@ -19,12 +22,14 @@ import ec.edu.ups.entidades.Producto;
 @WebServlet("/BuscarProds")
 public class BuscarProds extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductosDao proDao;     
+	private ProductosDao proDao;   
+	private EmpresaDAO empDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public BuscarProds() {
     	proDao= DAOFactory.getFactory().getProductosDao();
+    	empDAO = DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -54,6 +59,18 @@ public class BuscarProds extends HttpServlet {
 
 			
 			request.setAttribute("listaProd", list);
+			
+			
+			
+			Empresa Empr = empDAO.read(idEmp); 
+			
+			
+			Usuario ste = new Usuario(0, "F", "F", "F", "F", 'F',  Empr);
+			
+			request.setAttribute("usu", ste);
+			
+			
+			
 			url = "/HTMLs/Admin/TablaEditarProds.jsp";
 		}catch(Exception e) {
 			System.out.println("Error : "+e) ;

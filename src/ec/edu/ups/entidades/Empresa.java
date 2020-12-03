@@ -20,6 +20,12 @@ import javax.persistence.OneToMany;
 public class Empresa implements Serializable {
 
 	
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", nombre=" + nombre + ", usuarios=" + usuarios + ", productos=" + productos + "]";
+	}
+
+
 	private static final long serialVersionUID = 1L;
 
 	@Id

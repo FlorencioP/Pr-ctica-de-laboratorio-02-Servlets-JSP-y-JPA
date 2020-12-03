@@ -28,6 +28,7 @@ public class FiltrarProdPorCatInv extends HttpServlet {
 	
     public FiltrarProdPorCatInv() {
     	prodDAO= DAOFactory.getFactory().getProductosDao();
+    	empDAO= DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -51,6 +52,8 @@ public class FiltrarProdPorCatInv extends HttpServlet {
 		
 		
 		Empresa sta = empDAO.read(idEmp);
+		
+		
 		
 		Usuario ste = new Usuario(0, "", "", "", "", 'a', sta);
 		

@@ -19,21 +19,21 @@
     <% 
     
     if (u.getEmpresa().getId() == 1){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
     }else if (u.getEmpresa().getId() == 2){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
     }else{
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
     }
     %>
-    <script src='/Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/JavaScript/busqueda.js'></script>
+    <script src='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/busqueda.js'></script>
 
 </head>
 
 <body>
 
 	<div id="volver">
-        <a href="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html"><img src="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/fecha.png"></a>
+        <a href="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html"><img src="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/fecha.png"></a>
     </div>
 
 

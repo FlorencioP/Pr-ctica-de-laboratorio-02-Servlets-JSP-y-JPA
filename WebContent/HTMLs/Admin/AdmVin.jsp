@@ -17,15 +17,15 @@
     <% 
     
     if (u.getEmpresa().getId() == 1){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
     }else if (u.getEmpresa().getId() == 2){
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
     }else{
-    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
+    	out.println("<link rel='stylesheet' type='text/css' href='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
     }
     %>
     
-<script src='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/funcionesAdmin.js'></script>
+<script src='/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/funcionesAdmin.js'></script>
 </head>
 <body>
 
@@ -42,7 +42,7 @@
 	    
 	<div id = "OpsAdm">
 	    <div id="volver">
-	        <a href="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Salir"><img src="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/logout.png"></a>
+	        <a href="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/Salir"><img src="/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/logout.png"></a>
 	    </div>
 
 
@@ -72,6 +72,7 @@
 		<p>EmpresaID: ${u.getEmpresa().getId()}</p>-->
 		
 		<INPUT type = "hidden" value = "${u.getEmpresa().getId()}" name="IDEmpre"/>
+	
 	</div>
 
 

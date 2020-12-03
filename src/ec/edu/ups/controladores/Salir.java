@@ -34,7 +34,7 @@ public class Salir extends HttpServlet {
 			Usuario usu=null;
 			request.setAttribute("usu", usu);
 			session.invalidate();
-			response.sendRedirect("/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html");
+			response.sendRedirect("/Practica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html");
 		}
 	}
 

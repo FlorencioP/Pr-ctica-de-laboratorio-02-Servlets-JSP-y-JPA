@@ -16,6 +16,7 @@ import ec.edu.ups.dao.ProductosDao;
 import ec.edu.ups.entidades.Categoria;
 import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Usuario;
 
 /**
  * Servlet implementation class EditarProds
@@ -55,16 +56,34 @@ public class GuardarEditarProds extends HttpServlet {
 			Empresa empresa = empDao.read(idEmp);
 			Categoria categoria = catDao.read(sel);
 			
-			Producto proD = new Producto(id, nom, pre, des, empresa, categoria, 'A');
+			Producto proD = proDao.read(id) ;
+			
+			proD.setNombre(nom);
+			proD.setPrecio(pre);
+			proD.setDescripcion(des);
+			proD.setEmpresa(empresa);
+			proD.setCategoria(categoria);
+			proD.setEstado('A');
 			
 			System.out.println(proD);
 			
 			proDao.update(proD);
 			
-			List<Producto> list=proDao.findE(idEmp);
+			
+			
+			Empresa Empr = empDao.read(idEmp); 
+			
+			
+			Usuario ste = new Usuario(0, "F", "F", "F", "F", 'F',  Empr);
+			
+			List<Producto> list=null;
+			list=proDao.findE(idEmp);
+			
 			
 			request.setAttribute("listaProd", list);
-
+			
+			request.setAttribute("usu", ste);
+			
 			url = "/HTMLs/Admin/TablaEditarProds.jsp";
 			
 		}catch(Exception e) {
