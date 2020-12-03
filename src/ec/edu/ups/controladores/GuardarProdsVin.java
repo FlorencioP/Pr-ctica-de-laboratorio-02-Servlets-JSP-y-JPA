@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.entidades.Categoria;
+import ec.edu.ups.entidades.Empresa;
+import ec.edu.ups.entidades.Producto;
 import ec.edu.ups.dao.ProductosDao;
-
+import ec.edu.ups.dao.CAtegoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 
 
 /**
@@ -19,13 +22,18 @@ import ec.edu.ups.dao.DAOFactory;
 @WebServlet("/GuardarProdsVin")
 public class GuardarProdsVin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductosDao proDao;   
+	private ProductosDao proDao;  
+	private CAtegoriaDAO catDao;
+	private EmpresaDAO empDao;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public GuardarProdsVin() {
     	
     	proDao= DAOFactory.getFactory().getProductosDao();
+    	catDao= DAOFactory.getFactory().getcCAtegoriaDAO();
+    	empDao = DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -55,8 +63,12 @@ public class GuardarProdsVin extends HttpServlet {
 			System.out.println(nom +"|"+pre +"|"+des+"|"+img+"|"+emp+"|"+sel+"|");
 			
 			
-			Producto prod = new Producto(prodM, nom, pre, des, img, emp, sel,'A');
-			 
+			Empresa empresa = empDao.read(emp);
+			Categoria categoria = catDao.read(sel);
+			
+			Producto prod = new Producto(prodM, nom, pre, des, empresa, categoria, 'A');
+			
+			
 			System.out.println(prod);
 			
 			proDao.create(prod);

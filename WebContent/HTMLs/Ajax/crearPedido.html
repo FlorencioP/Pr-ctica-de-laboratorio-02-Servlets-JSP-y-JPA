@@ -1,0 +1,24 @@
+<form id="cajadecategorias">
+
+    <label for="cat">Seleccione una categoria:</label> <br>
+    <select name="cat" id="caja">
+            <option value="s">Ejemplo: Pan</option>
+            <option value="m">Ejemplo: Vino</option>
+        </select>
+    <!-- <input type="button" value="Seleccionar categoria" onclick="buscar()" /><br>
+        -->
+</form>
+
+
+
+<br>
+
+<form id="busqueda" onsubmit="return buscar()">
+
+    <label for="busqueda">Busqueda por texto:</label><br>
+
+    <input type="text" id="textoabusc" placeholder="Ingrese una palabra" />
+
+    <input type="button" value="Buscar: " onclick="buscar()" /><br>
+
+</form>

@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ec.edu.ups.dao.CAtegoriaDAO;
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductosDao;
-import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.entidades.Categoria;
+import ec.edu.ups.entidades.Empresa;
+import ec.edu.ups.entidades.Producto;
 
 /**
  * Servlet implementation class EditarProds
@@ -19,12 +23,17 @@ import ec.edu.ups.modelo.Producto;
 @WebServlet("/GuardarEditarProds")
 public class GuardarEditarProds extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductosDao proDao;    
+	private ProductosDao proDao;  
+	private CAtegoriaDAO catDao;
+	private EmpresaDAO empDao;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public GuardarEditarProds() {
     	proDao= DAOFactory.getFactory().getProductosDao();
+    	catDao= DAOFactory.getFactory().getcCAtegoriaDAO();
+    	empDao = DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -43,8 +52,10 @@ public class GuardarEditarProds extends HttpServlet {
 			int sel=Integer.parseInt(request.getParameter("sel"));
 			
 			
+			Empresa empresa = empDao.read(idEmp);
+			Categoria categoria = catDao.read(sel);
 			
-			Producto proD = new Producto(id, nom, pre, des, img, idEmp, sel,'A');
+			Producto proD = new Producto(id, nom, pre, des, empresa, categoria, 'A');
 			
 			System.out.println(proD);
 			

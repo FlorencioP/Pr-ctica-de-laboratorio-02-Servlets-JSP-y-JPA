@@ -28,10 +28,11 @@ public class PedidoDetalle implements Serializable {
 		super();
 	}
 	
-	public PedidoDetalle(int id, PedidoCabecera pedidoCabecera, Producto producto) {
+	public PedidoDetalle(int id,int cantidad , PedidoCabecera pedidoCabecera, Producto producto) {
 		this.setId(id);
-		this.setPedidoCabecera(pedidoCabecera);;
-		this.setProducto(producto);;
+		this.setPedidoCabecera(pedidoCabecera);
+		this.setProducto(producto);
+		this.setCantidad(cantidad);
 	}
 
 	public int getId() {

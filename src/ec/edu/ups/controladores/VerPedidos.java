@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PedidoCabeceraDAO;
-import ec.edu.ups.modelo.PedidoCabecera;
+import ec.edu.ups.entidades.PedidoCabecera;
 
 @WebServlet("/VerPedidos")
 public class VerPedidos extends HttpServlet {

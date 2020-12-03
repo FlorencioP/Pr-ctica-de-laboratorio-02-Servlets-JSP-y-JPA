@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductosDao;
 import ec.edu.ups.dao.UsuariosDAO;
-import ec.edu.ups.modelo.Producto;
-import ec.edu.ups.modelo.Usuario;
+import ec.edu.ups.entidades.Empresa;
+import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Usuario;
 
 /**
  * Servlet implementation class VisualizacionProductosIntitado
@@ -24,11 +26,13 @@ public class VisualizacionProductosInvitado extends HttpServlet {
        
     private ProductosDao prodDAO;
 	private UsuariosDAO usudao;
+	private EmpresaDAO empDAO;
     
     
     public VisualizacionProductosInvitado() {
         prodDAO= DAOFactory.getFactory().getProductosDao();
         usudao= DAOFactory.getFactory().getUsuariosDAO();
+        empDAO = DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -49,7 +53,10 @@ public class VisualizacionProductosInvitado extends HttpServlet {
 			int idEmp=Integer.parseInt(request.getParameter("idEmp"));
 			List<Producto> list= prodDAO.findE(idEmp);
 			
-			Usuario ste = new Usuario(0, "", "", "", "", 'a', idEmp);
+			Empresa emps = empDAO.read(idEmp);
+			
+			
+			Usuario ste = new Usuario(0, "", "", "", "", 'a', emps);
 			
 			request.setAttribute("listaProd", list);
 			

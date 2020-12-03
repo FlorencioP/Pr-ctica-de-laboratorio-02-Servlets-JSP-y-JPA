@@ -1,53 +1,41 @@
 package ec.edu.ups.controladores;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.UsuariosDAO;
 import ec.edu.ups.entidades.Usuario;
 
 /**
- * Servlet implementation class MostrarUsers
+ * Servlet implementation class Salir
  */
-@WebServlet("/MostrarUsers")
-public class MostrarUsers extends HttpServlet {
+@WebServlet("/Salir")
+public class Salir extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UsuariosDAO usuDao;  
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarUsers() {
-    	usuDao= DAOFactory.getFactory().getUsuariosDAO();
+    public Salir() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String url=null;
-		try {
-			int idEmp=Integer.parseInt(request.getParameter("idEmp"));
-				
-				List<Usuario> list= usuDao.findU(idEmp);
-				
-				request.setAttribute("listaClis", list);
-
-			url = "/HTMLs/Admin/usersEmpresa.jsp";
-			
-		}catch(Exception e) {
-			System.out.println("Error : "+e) ;
-			url = "/JSPs/error.jsp";
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			Usuario usu=null;
+			request.setAttribute("usu", usu);
+			session.invalidate();
+			response.sendRedirect("/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html");
 		}
-		getServletContext().getRequestDispatcher(url).forward(request, response);
-		
 	}
 
 	/**

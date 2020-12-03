@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PedidoDetalleDAO;
 import ec.edu.ups.dao.ProductosDao;
-import ec.edu.ups.modelo.PedidoDetalle;
-import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.entidades.PedidoDetalle;
+import ec.edu.ups.entidades.Producto;
 
 /**
  * Servlet implementation class VerPedidosDetalle
@@ -46,7 +46,7 @@ public class VerPedidosDetalle extends HttpServlet {
 			for(PedidoDetalle pD:list) {
 				System.out.println("pedido detalle: "+pD.getId());
 				
-				Producto ste = productoDao.read(pD.getFKProdID());
+				Producto ste = productoDao.read(pD.getProducto().getId());
 				
 				if (ste != null) {
 					listPro.add(ste);

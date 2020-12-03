@@ -14,7 +14,7 @@ import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PedidoDetalleDAO;
 
 
-import ec.edu.ups.modelo.PedidoDetalle;
+import ec.edu.ups.entidades.PedidoDetalle;
 
 /**
  * Servlet implementation class MostrarUsers

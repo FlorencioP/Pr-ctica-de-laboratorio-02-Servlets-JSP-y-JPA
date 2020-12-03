@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductosDao;
+import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Producto;
 import ec.edu.ups.entidades.Usuario;
 
@@ -22,6 +24,7 @@ public class FiltrarProdPorCatInv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private ProductosDao prodDAO;
+	private EmpresaDAO empDAO;
 	
     public FiltrarProdPorCatInv() {
     	prodDAO= DAOFactory.getFactory().getProductosDao();
@@ -47,7 +50,9 @@ public class FiltrarProdPorCatInv extends HttpServlet {
 		System.out.println(idCat+"y"+idCat);
 		
 		
-		//Usuario ste = new Usuario(0, "", "", "", "", 'a', idEmp);Linea a revisar
+		Empresa sta = empDAO.read(idEmp);
+		
+		Usuario ste = new Usuario(0, "", "", "", "", 'a', sta);
 		
 		
 		if(idCat==0) {

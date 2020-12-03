@@ -13,7 +13,7 @@ import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PedidoCabeceraDAO;
 import ec.edu.ups.dao.UsuariosDAO;
 
-import ec.edu.ups.modelo.PedidoCabecera;
+import ec.edu.ups.entidades.PedidoCabecera;
 
 
 /**

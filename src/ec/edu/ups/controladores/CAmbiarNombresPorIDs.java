@@ -14,9 +14,11 @@ import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.PedidoCabeceraDAO;
 import ec.edu.ups.dao.PedidoDetalleDAO;
 import ec.edu.ups.dao.ProductosDao;
-import ec.edu.ups.entidades.Empresa;
+import ec.edu.ups.dao.UsuariosDAO;
 import ec.edu.ups.entidades.PedidoCabecera;
 import ec.edu.ups.entidades.PedidoDetalle;
+import ec.edu.ups.entidades.Usuario;
+import ec.edu.ups.entidades.Producto;
 
 /**
  * Servlet implementation class CAmbiarNombresPorIDs
@@ -28,7 +30,7 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
 	private ProductosDao prodDAO;
 	private PedidoDetalleDAO pedDetDAO;
 	private PedidoCabeceraDAO pedCabDAO;
-	
+	private UsuariosDAO usuDAO;
 	
     public CAmbiarNombresPorIDs() {
     	prodDAO= DAOFactory.getFactory().getProductosDao();
@@ -43,10 +45,15 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
 		String url = null;
 		try{
 			String list=request.getParameter("lisPedido");
-			int usuID=Integer.parseInt(request.getParameter("usuID"));			
+			int usuID=Integer.parseInt(request.getParameter("usuID"));
+			int fkEmp=Integer.parseInt(request.getParameter("fkEmp"));
 			int idCab=pedCabDAO.ultimoID()+1;
-			//Empresa empresa=request.getParameter("empresa");linea a revisar para 
-			//PedidoCabecera pedCab=new PedidoCabecera(idCab, usuID, fkEmp);
+			
+			Usuario usu = (Usuario) usuDAO.findU(usuID);
+			
+			PedidoCabecera pedCab=new PedidoCabecera(idCab, usu, 'T');
+			
+		
 			pedCabDAO.create(pedCab);
 			int idCab2=pedCabDAO.ultimoID();
 			System.out.println("usuID: "+usuID);
@@ -63,7 +70,15 @@ public class CAmbiarNombresPorIDs extends HttpServlet {
 			}
 			for(int i=0;i<ejem.size();i++) {
 				int idDet=pedDetDAO.ultimoID()+1;
-				//PedidoDetalle pedDet= new PedidoDetalle(idDet, ejem2.get(i), idCab2, ejem.get(i),"ste",0.32); linea a revisar
+				
+				
+				PedidoCabecera pedidoCabecera =  pedCabDAO.read(idCab2);
+				
+				Producto producto = prodDAO.read(ejem.get(i));
+				
+				
+				PedidoDetalle pedDet  = new PedidoDetalle(idDet, ejem2.get(i), pedidoCabecera, producto);
+				
 				pedDetDAO.create(pedDet);
 			}
 			url="/HTMLs/User/MensajeExito.jsp";

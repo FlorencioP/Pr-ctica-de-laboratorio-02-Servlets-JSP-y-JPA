@@ -35,7 +35,10 @@ public class EliminarDet extends HttpServlet {
 			int idCab= Integer.parseInt(request.getParameter("idCab"));
 			int idDet= Integer.parseInt(request.getParameter("idDet"));
 			
-			//PedidoDetalle ste = new PedidoDetalle(idDet, 0, 0, 0, "", 0);Linea a revisar
+			
+			PedidoDetalle ste = pedDetDAO.read(idDet);
+			
+			
 			
 			//Metodo para cambiar de estado
 			pedDetDAO.delete(ste);

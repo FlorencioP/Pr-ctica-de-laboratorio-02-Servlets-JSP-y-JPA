@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.ProductosDao;
-import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.entidades.Producto;
 
 /**
  * Servlet implementation class VizualiProdCrearPed

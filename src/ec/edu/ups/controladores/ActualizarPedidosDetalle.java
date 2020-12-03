@@ -24,9 +24,12 @@ public class ActualizarPedidosDetalle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PedidoDetalleDAO pedidoDetDAO;
 	private ProductosDao productoDao;
-	
-    public ActualizarPedidosDetalle() {        
-        pedidoDetDAO=DAOFactory.getFactory().getpeDetalleDAO();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ActualizarPedidosDetalle() {
+    	pedidoDetDAO=DAOFactory.getFactory().getpeDetalleDAO();
     	productoDao=DAOFactory.getFactory().getProductosDao();
     }
 
@@ -34,7 +37,6 @@ public class ActualizarPedidosDetalle extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String url="";
 		try {
 			int id= Integer.parseInt(request.getParameter("idCab"));
@@ -42,7 +44,7 @@ public class ActualizarPedidosDetalle extends HttpServlet {
 			List<Producto> listPro = new ArrayList<Producto>();
 			for(PedidoDetalle pD:list) {
 				System.out.println("pedido detalle: "+pD.getId());
-				listPro.add(productoDao.read(pD.getFKProdID()));
+				listPro.add(productoDao.read(pD.getProducto().getId()));
 			}
 			request.setAttribute("listDetalles", list);
 			request.setAttribute("listProducto", listPro);

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.taglibs.standard.tag.common.sql.UpdateTagSupport;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.ProductosDao;
+import ec.edu.ups.entidades.Empresa;
 import ec.edu.ups.entidades.Producto;
 import ec.edu.ups.entidades.Usuario;
 
@@ -22,12 +24,14 @@ import ec.edu.ups.entidades.Usuario;
 @WebServlet("/EditarProds")
 public class EditarProds extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ProductosDao proDao;    
+	private ProductosDao proDao;  
+	private EmpresaDAO empDAO;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public EditarProds() {
     	proDao= DAOFactory.getFactory().getProductosDao();
+    	empDAO = DAOFactory.getFactory().getEmpresaDAO();
     }
 
 	/**
@@ -49,7 +53,10 @@ public class EditarProds extends HttpServlet {
 				
 				request.setAttribute("listaProd", list);
 				
-				//Usuario ste = new Usuario(0, "F", "F", "F", "F", 'F',  idEmp);liena a revisar
+				Empresa Empr = empDAO.read(idEmp); 
+				
+				
+				Usuario ste = new Usuario(0, "F", "F", "F", "F", 'F',  Empr);
 				
 				request.setAttribute("usu", ste);
 			

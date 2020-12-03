@@ -7,10 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ec.edu.ups.dao.DAOFactory;
 import ec.edu.ups.dao.UsuariosDAO;
-import ec.edu.ups.modelo.Usuario;
+import ec.edu.ups.entidades.Usuario;
 
 /**
  * Servlet implementation class Login
@@ -25,7 +26,7 @@ public class Login extends HttpServlet {
      */
     public Login() {
         usuDAO= DAOFactory.getFactory().getUsuariosDAO();
-        usu = new Usuario(1,"qwe","qwe","qwe","qwe",'q',1);
+        usu = new Usuario();
     }
 
 	/**
@@ -52,11 +53,22 @@ public class Login extends HttpServlet {
 			
 			url = "/JSPs/nousuario.jsp";
 			}else if (usu.getRol() == 'U'){
+				
+				
 				request.setAttribute("usu", usu);
+				HttpSession session = request.getSession(true);
+				session.setAttribute("accesos", 1);
 				url = "/HTMLs/User/usrVin.jsp";
+				
+				
 			}else if (usu.getRol() == 'A'){
+				
+				
 				request.setAttribute("usu", usu);
+				HttpSession session = request.getSession(true);
+				session.setAttribute("accesos", 1);
 				url = "/HTMLs/Admin/AdmVin.jsp";
+			
 			}
 			
 		

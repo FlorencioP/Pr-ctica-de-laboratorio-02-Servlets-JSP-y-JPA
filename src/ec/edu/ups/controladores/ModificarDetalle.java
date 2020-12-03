@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.PedidoCabeceraDAO;
 import ec.edu.ups.dao.PedidoDetalleDAO;
-import ec.edu.ups.modelo.PedidoDetalle;
+import ec.edu.ups.dao.ProductosDao;
+import ec.edu.ups.entidades.PedidoCabecera;
+import ec.edu.ups.entidades.PedidoDetalle;
+import ec.edu.ups.entidades.Producto;
 
 
 /**
@@ -20,8 +24,13 @@ public class ModificarDetalle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     private PedidoDetalleDAO pedDetDAO;
+    private PedidoCabeceraDAO pedCabDAO;
+    private ProductosDao proDAO;
+    
     public ModificarDetalle() {
         pedDetDAO=DAOFactory.getFactory().getpeDetalleDAO();
+        pedCabDAO = DAOFactory.getFactory().getpeCabeceraDAO();
+        proDAO = DAOFactory.getFactory().getProductosDao();
     }
 
 	/**
@@ -34,7 +43,14 @@ public class ModificarDetalle extends HttpServlet {
 			int idDet= Integer.parseInt(request.getParameter("idDet"));
 			int prodID= Integer.parseInt(request.getParameter("prodID"));
 			int cantidad= Integer.parseInt(request.getParameter("cantidad"));
-			PedidoDetalle pedDet=new PedidoDetalle(idDet, cantidad, idCab, prodID,"ste",0.2);
+			
+			
+			
+			PedidoCabecera pedidoCabecera = pedCabDAO.read(idCab);
+			Producto producto = proDAO.read(prodID);
+			
+			PedidoDetalle pedDet = new PedidoDetalle(idDet, cantidad, pedidoCabecera, producto);
+			
 			
 			pedDetDAO.update(pedDet);
 			

@@ -39,9 +39,11 @@ public class EliminarEditarProds extends HttpServlet {
 
 			
 			
-			//Producto ste = new Producto(id, "",0 , "", "", 0, 0,'g');Linea a revisar
+			Producto ste = proDao.read(id);
 			
-			proDao.delete(ste);;
+			
+			
+			proDao.deleteEstado(ste);
 			
 			
 			List<Producto> list=proDao.findE(idEmp);

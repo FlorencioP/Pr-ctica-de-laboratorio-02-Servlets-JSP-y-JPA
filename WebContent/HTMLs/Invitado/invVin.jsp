@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="ec.edu.ups.entidades.Producto"%>
+<%@page import="ec.edu.ups.entidades.Usuario"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guia Telefonica</title>
+	<c:set var="u" scope="request" value="${idEmp}" />
+    
+    <% Usuario u = (Usuario) request.getAttribute("idEmp"); %>
+    
+    <% 
+    
+    if (u.getEmpresa().getId() == 1){
+    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioVin.css' />");
+    }else if (u.getEmpresa().getId() == 2){
+    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorioAer.css' />");
+    }else{
+    	out.println("<link rel='stylesheet' type='text/css' href='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/CSS/directorio9ci.css' />");
+    }
+    %>
+    
+    <script src='/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/JavaScript/busqueda.js'></script>
+
+</head>
+
+
+<body>
+
+
+    <p>Menu de Busqueda</p>
+
+    <div id="volver">
+        <a href="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/index.html"><img src="/Práctica_de_laboratorio_02_Servlets_JSP_y_JPA/Recursos/fecha.png"></a>
+    </div>
+
+    <form id="cajadecategorias">
+
+        <label for="cat">Seleccione una categoria:</label> <br>
+        
+        
+        
+        
+        
+            <% 
+		    if ( u.getEmpresa().getId() == 1){
+		    	out.println("<select name='cat' id='cat'>" +
+		            	"<option value='s'>Todas</option>" +
+		                "<option value='s'>Pan</option>" +
+		                "<option value='m'>Vino</option>" +
+		                "<option value='m'>Queso</option>" +
+		            	"</select>");
+		    	
+		    }else if (u.getEmpresa().getId() == 2){
+		    	out.println("<select name='cat' id='cat'>" +
+		            	"<option value='s'>Todas</option>" +
+		                "<option value='s'>Camisetas</option>" +
+		                "<option value='m'>Pantalones</option>" +
+		                "<option value='m'>Casacas</option>" +
+		            	"</select>");
+		    }else{
+		    	out.println("<select name='cat' id='cat'>" +
+		            	"<option value='s'>Todas</option>" +
+		                "<option value='s'>Pan</option>" +
+		                "<option value='m'>Cereal</option>" +
+		                "<option value='m'>Frutas</option>" +
+		            	"</select>");
+		    }
+            
+            out.println("<input type='button' value='Seleccionar categoria' onclick='buscarCat("+u.getEmpresa().getId()+")' /><br>");
+		    %>
+		    
+        
+        
+        
+
+    </form>
+
+   <!--   <br>
+
+    <form  name="Busqueda" id="busqueda" onsubmit="return buscar()">
+
+        <label for="busqueda ">Busqueda por texto:</label><br>
+
+        <input type="text" id="textoabusc" placeholder="Ingrese una palabra" />
+
+        <input type="button" value="Buscar: " onclick="buscar()" /><br>
+
+    </form>-->
+
+    <div id="informacion">
+    		<c:set var="p" scope="request" value="${listaProd}" />
+			<% List<Producto> list = (List<Producto>) request.getAttribute("listaProd"); %>
+			<% PrintWriter out2= response.getWriter();%>
+			<table class='tg' style='width:95%'>
+			    <tr>
+			        <th class='tg-46ru'>Nombre</th>
+			        <th class='tg-46ru'>Precio</th>
+			        <th class='tg-46ru'>Descripcion</th>
+			        
+			    </tr>
+			    <%
+		    		for (int i=0;i<list.size();i++){
+			    		Producto prod=list.get(i);
+			    		out.println("<tr><td class='tg-y698'>"+prod.getNombre()+"</td><td class='tg-y698'>"+prod.getPrecio()+"</td><td" +
+			    					" class='tg-y698'>"+prod.getDescripcion()+"</td>");
+			       	}
+			    %>
+			</table>
+    </div>
+
+</body>
+
+
+</html>
